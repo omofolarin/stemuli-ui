@@ -2,7 +2,11 @@ import { Row, Col, Tag } from "antd";
 import * as React from "react";
 import { createUseStyles } from "react-jss";
 import theme from "../theme";
-import { Video as VideoIcon, Document as DocumentIcon } from "./icons";
+import {
+  Video as VideoIcon,
+  Document as DocumentIcon,
+  Download as DownloadIcon,
+} from "./icons";
 
 const styles = createUseStyles({
   root: {
@@ -102,7 +106,16 @@ const styles = createUseStyles({
     fontWidth: 500,
     marginBottom: "-0.15em",
   },
+
+  downloadIcon: {
+    width: "2.5em",
+  },
 });
+
+export interface AttachmentsData {
+  type: "document" | "image" | "video" | string;
+  data: { title: string; size: string };
+}
 
 interface ChatReplyProps {
   pic: string;
@@ -113,10 +126,7 @@ interface ChatReplyProps {
     reactions?: { emoji: React.ReactNode; count: number }[];
   }[];
   tags?: string[];
-  attachments?: {
-    type: "document" | "image" | "video";
-    data: { title: string; size: string };
-  }[];
+  attachments?: AttachmentsData[];
 }
 
 const ChatReply = (props: ChatReplyProps) => {
@@ -203,7 +213,9 @@ const ChatReply = (props: ChatReplyProps) => {
                           {attachment.data.size}
                         </p>
                       </div>
-                      <div className="downloadIcon"></div>
+                      <div className={classes.downloadIcon}>
+                        <DownloadIcon />
+                      </div>
                     </div>
                   </Col>
                 ))}

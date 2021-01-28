@@ -1,7 +1,7 @@
 import { Row, Col } from "antd";
 import React from "react";
 import { createUseStyles } from "react-jss";
-import ChatReply from "./chat-reply";
+import ChatReply, { AttachmentsData } from "./chat-reply";
 
 const styles = createUseStyles({
   root: {
@@ -24,7 +24,6 @@ export default function ChatMain() {
             "I would prefer a chat help style. I think it’s convenient for users who need help but might not be in a suitable environment",
         },
       ],
-      attachments: [],
     },
     {
       pic: "/",
@@ -43,9 +42,12 @@ export default function ChatMain() {
         {
           text:
             "I would prefer a chat help style. I think it’s convenient for users who need help but might not be in a suitable environment.",
+          reactions: [
+            { emoji: "😀", count: 25 },
+            { emoji: "🤗", count: 50 },
+          ],
         },
       ],
-      attachments: [],
     },
 
     {
