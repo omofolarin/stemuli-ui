@@ -162,12 +162,12 @@ const ChatReply = (props: ChatReplyProps) => {
               <div className="content">
                 {Array.isArray(contents) &&
                   contents.map((content, i) => (
-                    <>
+                    <React.Fragment key={i.toString()}>
                       <div key={i.toString()}>{content.text}</div>
                       <div className={classes.emojiContainer}>
                         {Array.isArray(content.reactions) &&
-                          content.reactions.map((react) => (
-                            <div>
+                          content.reactions.map((react, j) => (
+                            <div key={j.toString()}>
                               {" "}
                               <Tag className={classes.emojiTag}>
                                 <span className={classes.emoji}>
@@ -180,7 +180,7 @@ const ChatReply = (props: ChatReplyProps) => {
                             </div>
                           ))}
                       </div>
-                    </>
+                    </React.Fragment>
                   ))}
               </div>
             </div>
