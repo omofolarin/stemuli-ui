@@ -8,6 +8,7 @@ interface Theme {
   primaryTextColor: string;
   secondaryTextColor: string;
   outlineColor: string;
+  inputOutline: string;
 }
 
 const theme: Theme = {
@@ -17,6 +18,7 @@ const theme: Theme = {
   primaryTextColor: "#00000",
   secondaryTextColor: "#171717",
   outlineColor: "#ECEEF5",
+  inputOutline: "rgba(73.00, 80.00, 171.00, 0.26)",
 };
 
 export default theme;

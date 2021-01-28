@@ -1,13 +1,14 @@
 import * as React from "react";
 import { Col, Row } from "antd";
-import General from "../components/general";
+import ChatBoard from "../components/chat-board";
 import Chat from "../components/chat";
 import { createUseStyles } from "react-jss";
 
 const styles = createUseStyles({
   root: {
     width: "100%",
-    maxWidth: "5800px",
+    maxWidth: "1800px",
+    margin: "auto",
     padding: "2%",
     minHeight: "80vh",
   },
@@ -24,7 +25,7 @@ export default function Home() {
         </Col>
 
         <Col span={18}>
-          <General />
+          <ChatBoard />
         </Col>
       </Row>
     </div>

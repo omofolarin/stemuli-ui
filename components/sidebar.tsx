@@ -1,6 +1,17 @@
 import React from "react";
 import { createUseStyles } from "react-jss";
 import theme from "../theme";
+import {
+  Home as HomeIcon,
+  Analytics as AnalyticsIcon,
+  Messages as MessagesIcon,
+  Bookmarks as BookmarksIcon,
+  People as PeopleIcon,
+  Settings as SettingsIcon,
+  Notifications as NotificationIcon,
+  DropdownMore as DropdownMoreIcon,
+} from "./icons";
+import Link from "next/link";
 
 const Logo = () => {
   return (
@@ -35,8 +46,8 @@ const Logo = () => {
             y2="36"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#BB65FF" />
-            <stop offset="1" stop-color="#4C6FFF" />
+            <stop stopColor="#BB65FF" />
+            <stop offset="1" stopColor="#4C6FFF" />
           </linearGradient>
         </defs>
       </svg>
@@ -68,8 +79,25 @@ const styles = createUseStyles({
     margin: "1em 0",
   },
 
+  navItem: {
+    padding: "16px",
+    cursor: "pointer",
+  },
+
   footer: {
     width: "100%",
+  },
+
+  AvatarItem: {
+    display: "flex",
+    padding: "4px",
+  },
+  footerAvatar: {
+    width: "2em",
+    height: "2em",
+    backgroundColor: theme.backgroundColor,
+    margin: "auto",
+    borderRadius: "4px",
   },
 });
 
@@ -79,29 +107,58 @@ interface SidebarProps {
 
 const routes = {
   primary: [
-    { title: "Dashboard", url: "/dashboard", icon: null },
-    { title: "Analytics", url: "/analytics", icon: null },
-    { title: "Messages", url: "/messages", icon: null },
-    { title: "Help", url: "/help", icon: null },
-    { title: "Students", url: "/students", icon: null },
+    { title: "Dashboard", url: "/dashboard", icon: <HomeIcon /> },
+    { title: "Analytics", url: "/analytics", icon: <AnalyticsIcon /> },
+    { title: "Messages", url: "/messages", icon: <MessagesIcon /> },
+    { title: "Help", url: "/help", icon: <BookmarksIcon /> },
+    { title: "Students", url: "/students", icon: <PeopleIcon /> },
   ],
   secondary: [
-    { title: "Settings", url: "/settings", icon: null },
-    { title: "Notifications", url: "/notifications", icon: null },
+    { title: "Settings", url: "/settings", icon: <SettingsIcon /> },
+    {
+      title: "Notifications",
+      url: "/notifications",
+      icon: <NotificationIcon />,
+    },
   ],
 };
+
 export default function Sidebar(props: SidebarProps) {
   const classes = styles();
-
+  const mode = "minimize";
   return (
     <div className={classes.root}>
       <div className={classes.logo}>
         <Logo />
       </div>
-      <div className={classes.mainNav}></div>
-      <div className={classes.secondaryNav}></div>
-      <div className={classes.footer}></div>
-      right sidebar
+      <div className={classes.mainNav}>
+        {routes.primary.map((item, i) => {
+          return (
+            <div key={i.toString()}>
+              <div className={classes.navItem}>{item.icon}</div>
+            </div>
+          );
+        })}
+      </div>
+      <div className={classes.secondaryNav}>
+        {routes.secondary.map((item, i) => {
+          return (
+            <Link key={i.toString()} href={item.url}>
+              <div className={classes.navItem}>{item.icon}</div>
+            </Link>
+          );
+        })}
+      </div>
+      <div className={classes.footer}>
+        <div className={classes.AvatarItem}>
+          <div className={classes.footerAvatar}>
+            <img src={"/"} alt="icon" />
+          </div>
+          <div>
+            <DropdownMoreIcon />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
