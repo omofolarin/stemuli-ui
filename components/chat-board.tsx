@@ -3,8 +3,8 @@ import React from "react";
 import { createUseStyles } from "react-jss";
 import theme from "../theme";
 import Button from "./button";
-import GeneralMain from "./general-main";
-import GeneralSidebar from "./general-sidebar";
+import ChatMain from "./chat-main";
+import ChatSide from "./chat-side";
 import { Search as SearchIcon, VertMore as VertMoreIcon } from "./icons";
 
 const styles = createUseStyles({
@@ -59,11 +59,11 @@ export default function ChatBoard() {
       </div>
       <Row gutter={1}>
         <Col span={16}>
-          <GeneralMain />
+          <ChatMain />
         </Col>
 
         <Col span={8}>
-          <GeneralSidebar />
+          <ChatSide />
         </Col>
       </Row>
     </div>

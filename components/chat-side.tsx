@@ -8,7 +8,7 @@ const styles = createUseStyles({
   },
 });
 
-export default function GeneralSidebar() {
+export default function ChatSide() {
   const classes = styles();
   return <div className={classes.root}>s</div>;
 }
