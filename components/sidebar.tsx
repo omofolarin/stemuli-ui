@@ -102,7 +102,7 @@ const styles = createUseStyles({
 });
 
 interface SidebarProps {
-  mode: "minimize" | "expanded";
+  // mode: "minimize" | "expanded";
 }
 
 const routes = {
